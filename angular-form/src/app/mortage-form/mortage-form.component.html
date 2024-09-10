@@ -1,0 +1,17 @@
+<form [formGroup]="mortageForm">
+    <div class="title-bar">
+        <h1 class="title">Mortage Calculator</h1>
+        <p>clear all</p>
+    </div>
+    <div class="form-group">
+        <label for="mortage-amount">Mortage Amount</label>
+        <input 
+            type="number" 
+            name="mortage-amount" 
+            class="form-control"
+            placeholder="Enter the amount"
+            formControlName="mortage-amount"
+            [ngClass]=""
+        />
+    </div>
+</form>
