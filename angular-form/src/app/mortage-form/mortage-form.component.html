@@ -1,17 +1,102 @@
-<form [formGroup]="mortageForm">
-    <div class="title-bar">
-        <h1 class="title">Mortage Calculator</h1>
-        <p>clear all</p>
+<div class="form-container">
+    <div class="form-box">
+        <form [formGroup]="mortageForm">
+            <div class="title-bar">
+                <h1 class="title">Mortage Calculator</h1>
+                <p>clear all</p>
+            </div>
+            <div class="form-group">
+                <label for="mortage-amount">Mortage Amount</label>
+                <input 
+                    type="number" 
+                    name="mortage-amount" 
+                    class="form-control"
+                    placeholder="Enter the amount"
+                    formControlName="mortage-amount"
+                    [ngClass]="
+                        f.mortageAmount.invalid && (f.mortageAmount.dirty || f.mortageAmount.touched) ? 
+                        'is-invalid' : ''
+                    "
+                />
+                @if (f.mortageAmount.invalid && (f.mortageAmount.dirty || f.mortageAmount.touched)) {
+                    <small class="alert alert-danger">
+                        Mortage amount is mandatory and cannot be below 10000
+                    </small>
+                }
+            </div>
+            <div class="form-group">
+                <label for="mortage-term">Mortage Term</label>
+                <input 
+                    type="number"
+                    name="mortage-term" 
+                    class="form-control"
+                    placeholder="Enter the term in years"
+                    formControlName="mortage-term"
+                    [ngClass]="
+                        f.mortageTerm.invalid && (f.mortageTerm.dirty || f.mortageTerm.touched) ? 
+                        'is-invalid' : ''
+                    "
+                >
+                @if (f.mortageTerm.invalid && (f.mortageTerm.dirty || f.mortageTerm.touched)) {
+                    <small class="alert alert-danger">
+                        Mortage term is mandatory and cannot be below 10 years
+                    </small>
+                }
+            </div>
+            <div class="form-group">
+                <label for="interest-rate">Interest Rate</label>
+                <input 
+                    type="number"
+                    name="interest-rate" 
+                    class="form-control"
+                    placeholder="Enter the interest rate (in percentage)"
+                    formControlName="interest-rate"
+                    [ngClass]="
+                        f.interestRate.invalid && (f.interestRate.dirty || f.interestRate.touched) ? 
+                        'is-invalid' : ''
+                    "
+                >
+                @if (f.interestRate.invalid && (f.interestRate.dirty || f.interestRate.touched)) {
+                    <small class="alert alert-danger">
+                        Interest rate is mandatory and cannot be below 3 or above 7
+                    </small>
+                }
+            </div>
+            <label for="mortage-type">Mortage Type</label>
+            <div class="mortage-type-list">
+                <div class="repayment">
+                    <input 
+                        type="radio" 
+                        id="repayment-type" 
+                        name="mortage-type" 
+                        value="repayment"
+                        formControlName="mortage-type"
+                    />
+                    <label for="repayment-type-1">Repayment</label>
+                </div>
+                <div class="interest-only">
+                    <input 
+                        type="radio" 
+                        id="interest-only-type" 
+                        name="mortage-type" 
+                        value="interest-only"
+                        formControlName="mortage-type"
+                    />
+                    <label for="interest-only-type-2">Interest Only</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="calculateRepayments()">Calculate Repayments</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="mortage-amount">Mortage Amount</label>
-        <input 
-            type="number" 
-            name="mortage-amount" 
-            class="form-control"
-            placeholder="Enter the amount"
-            formControlName="mortage-amount"
-            [ngClass]=""
-        />
+    <div class="result-box">
+        <h1>Your results</h1>
+        <p>
+            Your results are shown below based on the information you provided.
+            To adjust the results, edit the form and click 'calculate repayments' again.
+        </p>
+        <div class="payment">
+            <p>your monthly payments</p>
+            <h1>{{ repaymentAmount //}}</h1>
+        </div>
     </div>
-</form>
+</div>
