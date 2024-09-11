@@ -12,7 +12,7 @@
                     name="mortage-amount" 
                     class="form-control"
                     placeholder="Enter the amount"
-                    formControlName="mortage-amount"
+                    formControlName="mortageAmount"
                     [ngClass]="
                         f.mortageAmount.invalid && (f.mortageAmount.dirty || f.mortageAmount.touched) ? 
                         'is-invalid' : ''
@@ -31,7 +31,7 @@
                     name="mortage-term" 
                     class="form-control"
                     placeholder="Enter the term in years"
-                    formControlName="mortage-term"
+                    formControlName="mortageTerm"
                     [ngClass]="
                         f.mortageTerm.invalid && (f.mortageTerm.dirty || f.mortageTerm.touched) ? 
                         'is-invalid' : ''
@@ -50,7 +50,7 @@
                     name="interest-rate" 
                     class="form-control"
                     placeholder="Enter the interest rate (in percentage)"
-                    formControlName="interest-rate"
+                    formControlName="interestRate"
                     [ngClass]="
                         f.interestRate.invalid && (f.interestRate.dirty || f.interestRate.touched) ? 
                         'is-invalid' : ''
@@ -68,9 +68,9 @@
                     <input 
                         type="radio" 
                         id="repayment-type" 
-                        name="mortage-type" 
+                        name="mortageType" 
                         value="repayment"
-                        formControlName="mortage-type"
+                        formControlName="mortageType"
                     />
                     <label for="repayment-type-1">Repayment</label>
                 </div>
@@ -78,9 +78,9 @@
                     <input 
                         type="radio" 
                         id="interest-only-type" 
-                        name="mortage-type" 
+                        name="mortageType" 
                         value="interest-only"
-                        formControlName="mortage-type"
+                        formControlName="mortageType"
                     />
                     <label for="interest-only-type-2">Interest Only</label>
                 </div>
@@ -96,7 +96,10 @@
         </p>
         <div class="payment">
             <p>your monthly payments</p>
-            <h1>{{ repaymentAmount //}}</h1>
+            <h1 class="monthly-payment"> &#8377; {{ repaymentAmount }}</h1>
+            <hr>
+            <p>Total you'll repay over the time</p>
+            <h2> &#8377; {{ totalRepayment }}</h2>
         </div>
     </div>
 </div>

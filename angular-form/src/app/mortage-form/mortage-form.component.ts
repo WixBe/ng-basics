@@ -11,13 +11,14 @@ import { NgClass, NgIf } from "@angular/common";
 })
 export class MortageFormComponent {
 
-  repaymentAmount: string = '';
-  totalRepayment: string = '';
+  repaymentAmount: string = '0';
+  totalRepayment: string = '0';
 
   mortageForm = new FormGroup({
-    mortageAmount: new FormControl(10000, [Validators.required, Validators.min(1000)]),
-    mortageTerm: new FormControl(15, [Validators.required, Validators.min(10)]),
-    interestRate: new FormControl(3, [Validators.required, Validators.min(3), Validators.max(7)]),
+    mortageAmount: new FormControl(0, [Validators.required, Validators.min(1000)]),
+    mortageTerm: new FormControl(0, [Validators.required, Validators.min(10)]),
+    interestRate: new FormControl(0, [Validators.required, Validators.min(3), Validators.max(7)]),
+    mortageType: new FormControl('repayment')
   })
 
   get f() {

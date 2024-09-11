@@ -20,6 +20,13 @@ body {
     padding: 2rem 3rem 2rem;
 }
 
+.title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
 .form-container {
     display: flex;
     flex-direction: row;
@@ -51,6 +58,7 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .result-box {
@@ -73,5 +81,16 @@ body {
     justify-content: flex-start;
 }
 
+.payment {
+    border-top: 3px solid #D8E045;
+    background-color: #0E2431;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    padding: 10px;
+}
 
-
+.monthly-payment {
+    color: #D8E045;
+    font-size: 1.5rem;
+    font-weight: 800;   
+}
